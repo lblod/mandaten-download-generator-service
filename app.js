@@ -1,4 +1,4 @@
-import { app, sparql } from 'mu';
+import { app, errorHandler } from 'mu';
 import { CronJob } from 'cron';
 import request from 'request';
 import { exportTaskByUuid, insertNewTask, isExportRunning, cleanup } from './lib/export-task';
@@ -20,15 +20,19 @@ new CronJob(cronFrequency, function() {
  * @return [202] if export started successfully. Location header contains an endpoint to monitor the task status
  * @return [503] if an export task is already running
 */
-app.post('/export-tasks', async function(req, res) {
+app.post('/export-tasks', async function(req, res, next) {
   if (await isExportRunning())
     return res.status(503).end();
 
-  const task = await insertNewTask();
+  try {
+    const task = await insertNewTask();
 
-  task.perform(); // don't await this call since the export is executed asynchronously
+    task.perform(); // don't await this call since the export is executed asynchronously
   
-  return res.status(202).location(`/export-tasks/${task.id}`).end();
+    return res.status(202).location(`/export-tasks/${task.id}`).end();
+  } catch(e) {
+    return next(new Error(e.message));
+  }
 });
 
 /**
@@ -48,3 +52,4 @@ app.get('/export-tasks/:id', async function(req, res) {
   }
 });
 
+app.use(errorHandler);
