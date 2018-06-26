@@ -7,7 +7,7 @@ To add the service to your stack, add the following snippet to `docker-compose.y
 ```
 services:
   export:
-    image: lblod/mandaten-download-generator-service:0.1.0
+    image: lblod/mandaten-download-generator-service:0.2.0
     volumes:
       - ./data/exports:/data/exports
       - ./config/export:/config
