@@ -7,7 +7,7 @@ To add the service to your stack, add the following snippet to `docker-compose.y
 ```
 services:
   export:
-    image: lblod/mandaten-download-generator-service:0.2.0
+    image: lblod/mandaten-download-generator-service:0.3.0
     volumes:
       - ./data/exports:/data/exports
       - ./config/export:/config
@@ -28,7 +28,7 @@ E.g.
   "prefixes": {
     "mandaat": "http://data.vlaanderen.be/ns/mandaat#",
     "person": "http://www.w3.org/ns/person#",
-    "foaf": "http://xmlns.com/foaf/0.1/"    
+    "foaf": "http://xmlns.com/foaf/0.1/"
   },
   "types": [
     {
@@ -76,7 +76,7 @@ Add the following snippet to your stack during development:
 ```
 services:
   export:
-    image: semtech/mu-javascript-template:1.2.0
+    image: semtech/mu-javascript-template:1.3.2
     ports:
       - 8888:80
     environment:
