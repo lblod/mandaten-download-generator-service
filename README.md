@@ -7,7 +7,7 @@ To add the service to your stack, add the following snippet to `docker-compose.y
 ```
 services:
   export:
-    image: lblod/mandaten-download-generator-service:0.3.0
+    image: lblod/mandaten-download-generator-service:0.3.1
     volumes:
       - ./data/exports:/data/exports
       - ./config/export:/config
@@ -77,7 +77,7 @@ Add the following snippet to your stack during development:
 ```
 services:
   export:
-    image: semtech/mu-javascript-template:1.3.2
+    image: semtech/mu-javascript-template:1.3.4
     ports:
       - 8888:80
     environment:
