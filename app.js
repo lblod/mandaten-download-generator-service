@@ -13,7 +13,8 @@ new CronJob(cronFrequency, function() {
   request.post('http://localhost/export-tasks');
 }, null, true);
 
-new CronJob('* * * * *', async () => {
+const retryCronFrequency = process.env.RETRY_CRON_PATTERN || '*/10 * * * *';
+new CronJob(retryCronFrequency, async () => {
   const retriableTasks = await getTasksThatCanBeRetried();
   for(const task of retriableTasks) {
     task.retry();
