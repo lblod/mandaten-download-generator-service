@@ -1,7 +1,7 @@
 import { app, errorHandler } from 'mu';
 import { CronJob } from 'cron';
 import request from 'request';
-import { exportTaskByUuid, insertNewTask, isExportRunning, cleanup } from './lib/export-task';
+import { exportTaskByUuid, insertNewTask, isExportRunning, cleanup, getTasksThatCanBeRetried } from './lib/export-task';
 
 /** Run on startup */
 cleanup();
@@ -12,6 +12,14 @@ new CronJob(cronFrequency, function() {
   console.log(`Export triggered by cron job at ${new Date().toISOString()}`);
   request.post('http://localhost/export-tasks');
 }, null, true);
+
+new CronJob('* * * * *', async () => {
+  const retriableTasks = await getTasksThatCanBeRetried();
+  console.log(retriableTasks)
+  for(const task of retriableTasks) {
+    task.retry()
+  }
+}, null, true)
 
 
 /**
