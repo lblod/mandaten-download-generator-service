@@ -15,11 +15,10 @@ new CronJob(cronFrequency, function() {
 
 new CronJob('* * * * *', async () => {
   const retriableTasks = await getTasksThatCanBeRetried();
-  console.log(retriableTasks)
   for(const task of retriableTasks) {
-    task.retry()
+    task.retry();
   }
-}, null, true)
+}, null, true);
 
 
 /**
