@@ -17,7 +17,7 @@ const retryCronFrequency = process.env.RETRY_CRON_PATTERN || '*/10 * * * *';
 new CronJob(retryCronFrequency, async () => {
   const retriableTasks = await getTasksThatCanBeRetried();
   for(const task of retriableTasks) {
-    task.retry();
+    await task.retry();
   }
 }, null, true);
 
