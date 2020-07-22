@@ -58,6 +58,8 @@ The following environment variables can be configured:
 * `EXPORT_CRON_PATTERN`: cron pattern to configure the frequency of the cron job. The pattern follows the format as specified in [node-cron](https://www.npmjs.com/package/cron#available-cron-patterns). Defaults to `0 0 */2 * * *`, run every 2 hours.
 * `EXPORT_FILE_BASE`: base name of the export file. Defaults to `mandaten`. The export file will be named `{EXPORT_FILE_BASE}-{timestamp}.{csv|ttl}`.
 * `EXPORT_TTL_BATCH_SIZE`: batch size used as `LIMIT` in the `CONSTRUCT` SPARQL queries per type. Defaults to `1000`. To have a complete export, make sure `EXPORT_TTL_BATCH_SIZE * number_of_matching_triples` doesn't exceed the maximum number of triples return by the database (e.g. `ResultSetMaxRows` in Virtuoso).
+* `RETRY_CRON_PATTERN`: cron pattern to configure the frequency of the function that retries failed tasks. The pattern follows the format as specified in [node-cron](https://www.npmjs.com/package/cron#available-cron-patterns). Defaults to `0 */10 * * * *`, run every 10 minutes.
+* `NUMBER_OF_RETRIES`: defined the number of times a task will be retried
 
 ## REST API
 ### POST /export-tasks
