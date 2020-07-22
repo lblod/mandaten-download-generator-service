@@ -1,7 +1,7 @@
 import { app, errorHandler } from 'mu';
 import { CronJob } from 'cron';
-import request from 'request';
 import { exportTaskByUuid, insertNewTask, isExportRunning, cleanup } from './lib/export-task';
+import fetch from 'node-fetch';
 
 /** Run on startup */
 cleanup();
@@ -10,7 +10,7 @@ cleanup();
 const cronFrequency = process.env.EXPORT_CRON_PATTERN || '0 0 */2 * * *';
 new CronJob(cronFrequency, function() {
   console.log(`Export triggered by cron job at ${new Date().toISOString()}`);
-  request.post('http://localhost/export-tasks');
+  fetch('http://localhost/export-tasks', {method: 'POST'});
 }, null, true);
 
 
