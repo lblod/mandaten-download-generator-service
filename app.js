@@ -1,6 +1,6 @@
 import { app, errorHandler } from 'mu';
 import { CronJob } from 'cron';
-import request from 'request';
+import fetch from 'node-fetch';
 import { exportTaskByUuid, insertNewTask, isExportRunning, cleanup, getTasksThatCanBeRetried } from './lib/export-task';
 
 /** Run on startup */
