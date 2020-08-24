@@ -1,6 +1,6 @@
 {
   "name": "mandaten-export-generator-service",
-  "version": "0.3.3",
+  "version": "0.3.5",
   "description": "Microservice to generate the export files for mandatendatabank",
   "dependencies": {
     "cron": "^1.3.0",
