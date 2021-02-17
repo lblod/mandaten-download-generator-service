@@ -6,6 +6,7 @@ export const STATUS_CANCELED = 'http://redpencil.data.gift/id/concept/JobStatus/
 
 export const JOB_TYPE = 'http://vocab.deri.ie/cogs#Job';
 export const TASK_TYPE = 'http://redpencil.data.gift/vocabularies/tasks/Task';
+export const EXPORT_TYPE = 'http://redpencil.data.gift/vocabularies/exports/Export';
 export const ERROR_TYPE= 'http://open-services.net/ns/core#Error';
 
 export const PREFIXES = `
@@ -20,6 +21,7 @@ export const PREFIXES = `
   PREFIX adms: <http://www.w3.org/ns/adms#>
   PREFIX export: <http://mu.semte.ch/vocabularies/ext/export/>
   PREFIX nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#>
+  PREFIX    dbpedia: <http://dbpedia.org/ontology/>
 `;
 
 export const TASK_URI_PREFIX = 'http://redpencil.data.gift/id/task/';
@@ -30,6 +32,7 @@ export const JOB_CREATOR_URI = 'http://lblod.data.gift/services/DownloadGenerato
 export const JOBS_GRAPH = process.env.JOBS_GRAPH || 'http://mu.semte.ch/graphs/system/jobs';
 export const FILES_GRAPH = process.env.FILES_GRAPH || 'http://mu.semte.ch/graphs/system/jobs';
 export const JOB_OPERATION_URI = `http://redpencil.data.gift/id/jobs/concept/JobOperation/DownloadGeneration`;
+export const EXPORT_CLASSIFICATION_URI = process.env.EXPORT_CLASSIFICATION_URI || `http://redpencil.data.gift/id/exports/concept/GenericExport`;
 
 if(!process.env.TASK_OPERATION_URI)
   throw `Expected 'TASK_OPERATION_URI' to be provided.`;
