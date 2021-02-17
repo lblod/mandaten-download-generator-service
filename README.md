@@ -16,7 +16,7 @@ services:
 Don't forget to update the dispatcher configuration to route requests to the export service.
 The may then be served by the [mu-file-service](https://github.com/mu-semtech/file-service)
 ## Model
-The task are modelled in agreement with the [cogs:Job](<http://vocab.deri.ie/cogs#Job) and [task:Task](http://redpencil.data.gift/vocabularies/tasks/Task).
+The task are modelled in agreement with the [cogs:Job](http://vocab.deri.ie/cogs#Job) and [task:Task](http://redpencil.data.gift/vocabularies/tasks/Task).
 The full description should be availible on [data.gift](https://redpencil.data.gift/vocabularies/tasks) (TODO).
 Seel also e.g. [jobs-controller-service](https://github.com/lblod/job-controller-service) for more information on the model.
 
