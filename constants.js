@@ -19,9 +19,9 @@ export const PREFIXES = `
   PREFIX oslc: <http://open-services.net/ns/core#>
   PREFIX cogs: <http://vocab.deri.ie/cogs#>
   PREFIX adms: <http://www.w3.org/ns/adms#>
-  PREFIX export: <http://mu.semte.ch/vocabularies/ext/export/>
+  PREFIX export: <http://redpencil.data.gift/vocabularies/exports/>
   PREFIX nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#>
-  PREFIX    dbpedia: <http://dbpedia.org/ontology/>
+  PREFIX dbpedia: <http://dbpedia.org/ontology/>
 `;
 
 export const TASK_URI_PREFIX = 'http://redpencil.data.gift/id/task/';
