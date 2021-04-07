@@ -130,6 +130,7 @@ services:
       - ./config/export:/config
 ```
 ## Caveats/TODOs
+- A migration is wishful if you proviously used 0.x.x versions in your stack. To convert the old task model to `cogs:Job`
 - It needs to be directly linked to virtuoso. No support for `CONSTRUCT` queries in the current latest version (v0.6.0-beta.6) of mu-auth.
 - From a data model perspective the retry of the task might be confusing. In current implementation, a failed task, does not mean that it will stop.
   It might end once the threshold of retries is reached
