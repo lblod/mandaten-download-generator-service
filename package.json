@@ -1,6 +1,6 @@
 {
   "name": "mandaten-export-generator-service",
-  "version": "0.3.6-hotfix_1",
+  "version": "0.3.6-hotfix_3",
   "description": "Microservice to generate the export files for mandatendatabank",
   "main": "app.js",
   "dependencies": {
