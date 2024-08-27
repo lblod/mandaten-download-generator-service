@@ -1,6 +1,6 @@
-steps:
-  build-latest:
-    image: woodpeckerci/plugin-docker-buildx
+pipeline:
+  build:
+    image: plugins/docker
     settings:
       repo: ${CI_REPO}
       tags: latest

@@ -1,6 +1,6 @@
-steps:
+pipeline:
   build-feature:
-    image: woodpeckerci/plugin-docker-buildx
+    image: plugins/docker
     settings:
       repo: ${CI_REPO}
       tags: "feature-${CI_COMMIT_BRANCH##feature/}"
