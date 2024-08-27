@@ -1,6 +1,7 @@
 import { app, errorHandler } from 'mu';
 import { CronJob } from 'cron';
 import fetch from 'node-fetch';
+import * as env from './env';
 import {
   exportTaskByUuid,
   insertNewTask,
@@ -13,9 +14,8 @@ import {
 cleanup();
 
 /** Schedule export cron job */
-const cronFrequency = process.env.EXPORT_CRON_PATTERN || '0 0 */2 * * *';
 new CronJob(
-  cronFrequency,
+  env.EXPORT_CRON_PATTERN,
   function () {
     console.log(`Export triggered by cron job at ${new Date().toISOString()}`);
     fetch('http://localhost/export-tasks', { method: 'POST' });
@@ -24,9 +24,8 @@ new CronJob(
   true,
 );
 
-const retryCronFrequency = process.env.RETRY_CRON_PATTERN || '*/10 * * * *';
 new CronJob(
-  retryCronFrequency,
+  env.RETRY_CRON_PATTERN,
   async () => {
     const retriableTasks = await getTasksThatCanBeRetried();
     for (const task of retriableTasks) {
