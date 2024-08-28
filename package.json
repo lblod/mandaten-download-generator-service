@@ -31,7 +31,6 @@
   "dependencies": {
     "cron": "^3.1.7",
     "env-var": "^7.3.0",
-    "event-stream": "^4.0.1",
     "node-fetch": "^2.6.0",
     "form-data": "^4.0.0"
   },
