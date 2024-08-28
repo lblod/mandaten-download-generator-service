@@ -37,9 +37,11 @@ new CronJob(
 );
 
 /**
- * Triggers an async export task for the mandatendatabank and writes the data dumps to files in /data/exports
+ * Triggers an async export task for the mandatendatabank and writes the data
+ * dumps to files in /data/exports
  *
- * @return [202] if export started successfully. Location header contains an endpoint to monitor the task status
+ * @return [202] if export started successfully. Location header contains an
+ * endpoint to monitor the task status
  * @return [503] if an export task is already running
  */
 app.post('/export-tasks', async function (req, res, next) {
@@ -48,7 +50,8 @@ app.post('/export-tasks', async function (req, res, next) {
   try {
     const task = await insertNewTask();
 
-    task.perform(); // don't await this call since the export is executed asynchronously
+    // Don't await this call since the export is executed asynchronously:
+    task.perform();
 
     return res.status(202).location(`/export-tasks/${task.id}`).end();
   } catch (e) {
