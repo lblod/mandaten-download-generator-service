@@ -1,13 +1,19 @@
-export const STATUS_BUSY = 'http://redpencil.data.gift/id/concept/JobStatus/busy';
-export const STATUS_SCHEDULED = 'http://redpencil.data.gift/id/concept/JobStatus/scheduled';
-export const STATUS_SUCCESS = 'http://redpencil.data.gift/id/concept/JobStatus/success';
-export const STATUS_FAILED = 'http://redpencil.data.gift/id/concept/JobStatus/failed';
-export const STATUS_CANCELED = 'http://redpencil.data.gift/id/concept/JobStatus/canceled';
+export const STATUS_BUSY =
+  'http://redpencil.data.gift/id/concept/JobStatus/busy';
+export const STATUS_SCHEDULED =
+  'http://redpencil.data.gift/id/concept/JobStatus/scheduled';
+export const STATUS_SUCCESS =
+  'http://redpencil.data.gift/id/concept/JobStatus/success';
+export const STATUS_FAILED =
+  'http://redpencil.data.gift/id/concept/JobStatus/failed';
+export const STATUS_CANCELED =
+  'http://redpencil.data.gift/id/concept/JobStatus/canceled';
 
 export const JOB_TYPE = 'http://vocab.deri.ie/cogs#Job';
 export const TASK_TYPE = 'http://redpencil.data.gift/vocabularies/tasks/Task';
-export const EXPORT_TYPE = 'http://redpencil.data.gift/vocabularies/exports/Export';
-export const ERROR_TYPE= 'http://open-services.net/ns/core#Error';
+export const EXPORT_TYPE =
+  'http://redpencil.data.gift/vocabularies/exports/Export';
+export const ERROR_TYPE = 'http://open-services.net/ns/core#Error';
 
 export const PREFIXES = `
   PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
@@ -26,14 +32,21 @@ export const PREFIXES = `
 
 export const TASK_URI_PREFIX = 'http://redpencil.data.gift/id/task/';
 export const JOB_URI_PREFIX = 'http://redpencil.data.gift/id/job/';
-export const CONTAINER_URI_PREFIX = 'http://redpencil.data.gift/id/dataContainers/';
+export const CONTAINER_URI_PREFIX =
+  'http://redpencil.data.gift/id/dataContainers/';
 export const ERROR_URI_PREFIX = 'http://redpencil.data.gift/id/jobs/error/';
-export const JOB_CREATOR_URI = 'http://lblod.data.gift/services/DownloadGeneratorService';
-export const JOBS_GRAPH = process.env.JOBS_GRAPH || 'http://mu.semte.ch/graphs/system/jobs';
-export const FILES_GRAPH = process.env.FILES_GRAPH || 'http://mu.semte.ch/graphs/system/jobs';
-export const JOB_OPERATION_URI = `http://redpencil.data.gift/id/jobs/concept/JobOperation/DownloadGeneration`;
-export const EXPORT_CLASSIFICATION_URI = process.env.EXPORT_CLASSIFICATION_URI || `http://redpencil.data.gift/id/exports/concept/GenericExport`;
+export const JOB_CREATOR_URI =
+  'http://lblod.data.gift/services/DownloadGeneratorService';
+export const JOBS_GRAPH =
+  process.env.JOBS_GRAPH || 'http://mu.semte.ch/graphs/system/jobs';
+export const FILES_GRAPH =
+  process.env.FILES_GRAPH || 'http://mu.semte.ch/graphs/system/jobs';
+export const JOB_OPERATION_URI =
+  'http://redpencil.data.gift/id/jobs/concept/JobOperation/DownloadGeneration';
+export const EXPORT_CLASSIFICATION_URI =
+  process.env.EXPORT_CLASSIFICATION_URI ||
+  'http://redpencil.data.gift/id/exports/concept/GenericExport';
 
-if(!process.env.TASK_OPERATION_URI)
-  throw `Expected 'TASK_OPERATION_URI' to be provided.`;
+if (!process.env.TASK_OPERATION_URI)
+  throw "Expected 'TASK_OPERATION_URI' to be provided.";
 export const TASK_OPERATION_URI = process.env.TASK_OPERATION_URI;
