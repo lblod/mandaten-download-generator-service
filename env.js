@@ -72,6 +72,9 @@ export const EXPORT_CLASSIFICATION_URI = envvar
 export const TASK_OPERATION_URI = envvar
   .get('TASK_OPERATION_URI')
   .required()
+  .default(
+    'http://lblod.data.gift/id/jobs/concept/TaskOperation/exportMandatarissen',
+  )
   .asUrlString();
 
 export const CSV_EXPORT_SPARQL_FILE = envvar
