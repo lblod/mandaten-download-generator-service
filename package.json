@@ -29,10 +29,11 @@
     "qunit": "^2.20.1"
   },
   "dependencies": {
+    "@lblod/mu-auth-sudo": "^0.6.1",
     "cron": "^3.1.7",
     "env-var": "^7.3.0",
-    "node-fetch": "^3.3.2",
-    "form-data": "^4.0.0"
+    "form-data": "^4.0.0",
+    "node-fetch": "^3.3.2"
   },
   "repository": {
     "type": "git",
