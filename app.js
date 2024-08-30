@@ -1,6 +1,6 @@
 import { app, errorHandler } from 'mu';
 import { CronJob } from 'cron';
-import fetch from 'node-fetch';
+import * as http from 'node:http';
 import * as env from './env';
 import {
   exportTaskByUuid,
@@ -18,7 +18,12 @@ new CronJob(
   env.EXPORT_CRON_PATTERN,
   function () {
     console.log(`Export triggered by cron job at ${new Date().toISOString()}`);
-    fetch('http://localhost/export-tasks', { method: 'POST' });
+    http
+      .request({
+        path: '/export-tasks',
+        method: 'POST',
+      })
+      .end();
   },
   null,
   true,
