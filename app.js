@@ -9,9 +9,10 @@ import {
   cleanup,
   getTasksThatCanBeRetried,
 } from './lib/export-task';
+import { waitForDatabase } from './database-utils';
 
 /** Run on startup */
-cleanup();
+waitForDatabase().then(cleanup());
 
 /** Schedule export cron job */
 new CronJob(
