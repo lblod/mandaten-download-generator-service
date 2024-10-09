@@ -136,3 +136,10 @@ export const CONTAINER_URI_PREFIX =
 export const ERROR_URI_PREFIX = 'http://redpencil.data.gift/id/jobs/error/';
 export const JOB_CREATOR_URI =
   'http://lblod.data.gift/services/DownloadGeneratorService';
+
+// Sparql connection options for mu-auth-sudo
+
+export const sparqlConnectionOptions = {
+  sparqlEndpoint: MU_SPARQL_ENDPOINT,
+  mayRetry: true,
+};
