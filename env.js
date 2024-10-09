@@ -82,6 +82,17 @@ export const CSV_EXPORT_SPARQL_FILE = envvar
   .default('/config/csv-export.sparql')
   .asString();
 
+export const PING_DB_INTERVAL = envvar
+  .get('PING_DB_INTERVAL')
+  .default(2) // 2 milliseconds
+  .asInt();
+
+export const SLEEP_INTERVAL = envvar
+  .get('SLEEP_INTERVAL')
+  .required()
+  .default('1000')
+  .asIntPositive();
+
 // Constants
 
 export const STATUS_BUSY =
