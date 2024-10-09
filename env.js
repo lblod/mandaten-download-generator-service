@@ -84,13 +84,13 @@ export const CSV_EXPORT_SPARQL_FILE = envvar
 
 export const PING_DB_INTERVAL = envvar
   .get('PING_DB_INTERVAL')
-  .default(2) // 2 milliseconds
-  .asInt();
+  .default('2000') // 2 seconds
+  .asIntPositive();
 
 export const SLEEP_INTERVAL = envvar
   .get('SLEEP_INTERVAL')
   .required()
-  .default('1000')
+  .default('1000') // 1 second
   .asIntPositive();
 
 // Constants

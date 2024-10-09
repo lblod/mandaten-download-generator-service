@@ -20,7 +20,7 @@ const waitForDatabase = async function () {
   let loop = true;
   while (loop) {
     loop = !(await isDatabaseUp());
-    await sleep(env.PING_DB_INTERVAL * 1000);
+    await sleep(env.PING_DB_INTERVAL);
   }
 };
 
