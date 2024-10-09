@@ -1,21 +1,41 @@
 {
   "name": "mandaten-export-generator-service",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "description": "Microservice to generate the export files for mandatendatabank",
-  "dependencies": {
-    "cron": "^1.3.0",
-    "event-stream": "^3.3.4",
-    "fs-extra": "^5.0.0",
-    "node-fetch": "^2.6.1"
-  },
-  "devDependencies": {},
+  "author": "redpencil.io",
+  "license": "MIT",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint:js": "eslint --cache **/*.js",
+    "lint:js:fix": "eslint . --cache --fix",
+    "test": "qunit --require ./test/setup.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
+    "@babel/node": "^7.20.7",
+    "@babel/plugin-proposal-decorators": "^7.22.15",
+    "@babel/preset-env": "^7.22.10",
+    "@babel/preset-typescript": "^7.24.1",
+    "@babel/register": "^7.23.7",
+    "@stylistic/eslint-plugin-js": "^2.0.0",
+    "babel-plugin-module-resolver": "^5.0.0",
+    "eslint": "^9.2.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-qunit": "^8.1.1",
+    "express-http-context": "^1.2.4",
+    "prettier": "^3.3.2",
+    "qunit": "^2.20.1"
+  },
+  "dependencies": {
+    "@lblod/mu-auth-sudo": "^0.6.1",
+    "cron": "^3.1.7",
+    "env-var": "^7.3.0",
+    "form-data": "^4.0.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lblod/mandaten-export-generator-service.git"
-  },
-  "author": "redpencil.io",
-  "license": "MIT"
+  }
 }

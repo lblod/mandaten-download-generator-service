@@ -1,0 +1,10 @@
+pipeline:
+  build-feature:
+    image: plugins/docker
+    settings:
+      repo: ${CI_REPO}
+      tags: "feature-${CI_COMMIT_BRANCH##feature/}"
+    secrets: [ docker_username, docker_password ]
+when:
+  branch: feature/*
+  event: push
