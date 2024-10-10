@@ -26,13 +26,14 @@ const waitForDatabase = async function () {
 
 const sendDummyQuery = async function () {
   try {
-    await querySudo(`
+    await querySudo(
+      `
       SELECT ?s WHERE {
         GRAPH ?g {
           ?s ?p ?o
         }
-      } LIMIT 1
-    `);
+      } LIMIT 1`,
+    );
   } catch (e) {
     throw new Error(e.toString());
   }
