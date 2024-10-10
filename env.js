@@ -13,7 +13,7 @@ export const RETRY_CRON_PATTERN = envvar
   .get('RETRY_CRON_PATTERN')
   .required()
   .example('0 0 0 * * *')
-  .default('*/10 * * * *')
+  .default('0 * * * *')
   .asString();
 
 export const MU_SPARQL_ENDPOINT = envvar
