@@ -16,8 +16,8 @@ import { waitForDatabase } from './database-utils';
  * schedule retry and export cron jobs.
  */
 waitForDatabase()
-  .then(cleanup())
-  .then(
+  .then(() => cleanup())
+  .then(() => {
     new CronJob(
       env.EXPORT_CRON_PATTERN,
       function () {
@@ -33,9 +33,9 @@ waitForDatabase()
       },
       null,
       true,
-    ),
-  )
-  .then(
+    );
+  })
+  .then(() => {
     new CronJob(
       env.RETRY_CRON_PATTERN,
       async () => {
@@ -46,8 +46,8 @@ waitForDatabase()
       },
       null,
       true,
-    ),
-  );
+    );
+  });
 
 /**
  * Triggers an async export task for the mandatendatabank and writes the data
