@@ -115,6 +115,7 @@ export const EXPORT_TYPE =
 export const ERROR_TYPE = 'http://open-services.net/ns/core#Error';
 
 export const PREFIXES = `
+  PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
   PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
   PREFIX task: <http://redpencil.data.gift/vocabularies/tasks/>
   PREFIX dct: <http://purl.org/dc/terms/>
