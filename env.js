@@ -20,7 +20,7 @@ export const MU_SPARQL_ENDPOINT = envvar
   .get('MU_SPARQL_ENDPOINT')
   .required()
   .example('http://virtuoso:8890/sparql')
-  .default('http://database:8890/sparql')
+  .default('http://virtuoso:8890/sparql')
   .asUrlString();
 
 export const EXPORT_TTL_BATCH_SIZE = envvar
