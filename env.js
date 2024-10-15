@@ -13,14 +13,14 @@ export const RETRY_CRON_PATTERN = envvar
   .get('RETRY_CRON_PATTERN')
   .required()
   .example('0 0 0 * * *')
-  .default('*/10 * * * *')
+  .default('0 * * * *')
   .asString();
 
 export const MU_SPARQL_ENDPOINT = envvar
   .get('MU_SPARQL_ENDPOINT')
   .required()
   .example('http://virtuoso:8890/sparql')
-  .default('http://database:8890/sparql')
+  .default('http://virtuoso:8890/sparql')
   .asUrlString();
 
 export const EXPORT_TTL_BATCH_SIZE = envvar
@@ -82,6 +82,17 @@ export const CSV_EXPORT_SPARQL_FILE = envvar
   .default('/config/csv-export.sparql')
   .asString();
 
+export const PING_DB_INTERVAL = envvar
+  .get('PING_DB_INTERVAL')
+  .default('2000') // 2 seconds
+  .asIntPositive();
+
+export const SLEEP_INTERVAL = envvar
+  .get('SLEEP_INTERVAL')
+  .required()
+  .default('1000') // 1 second
+  .asIntPositive();
+
 // Constants
 
 export const STATUS_BUSY =
@@ -104,6 +115,7 @@ export const EXPORT_TYPE =
 export const ERROR_TYPE = 'http://open-services.net/ns/core#Error';
 
 export const PREFIXES = `
+  PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
   PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
   PREFIX task: <http://redpencil.data.gift/vocabularies/tasks/>
   PREFIX dct: <http://purl.org/dc/terms/>
@@ -125,3 +137,10 @@ export const CONTAINER_URI_PREFIX =
 export const ERROR_URI_PREFIX = 'http://redpencil.data.gift/id/jobs/error/';
 export const JOB_CREATOR_URI =
   'http://lblod.data.gift/services/DownloadGeneratorService';
+
+// Sparql connection options for mu-auth-sudo
+
+export const sparqlConnectionOptions = {
+  sparqlEndpoint: MU_SPARQL_ENDPOINT,
+  mayRetry: true,
+};

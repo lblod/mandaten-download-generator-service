@@ -9,37 +9,45 @@ import {
   cleanup,
   getTasksThatCanBeRetried,
 } from './lib/export-task';
+import { waitForDatabase } from './database-utils';
 
-/** Run on startup */
-cleanup();
-
-/** Schedule export cron job */
-new CronJob(
-  env.EXPORT_CRON_PATTERN,
-  function () {
-    console.log(`Export triggered by cron job at ${new Date().toISOString()}`);
-    http
-      .request({
-        path: '/export-tasks',
-        method: 'POST',
-      })
-      .end();
-  },
-  null,
-  true,
-);
-
-new CronJob(
-  env.RETRY_CRON_PATTERN,
-  async () => {
-    const retriableTasks = await getTasksThatCanBeRetried();
-    for (const task of retriableTasks) {
-      await task.retry();
-    }
-  },
-  null,
-  true,
-);
+/**
+ * On startup, cancel previously busy tasks and
+ * schedule retry and export cron jobs.
+ */
+waitForDatabase()
+  .then(() => cleanup())
+  .then(() => {
+    new CronJob(
+      env.EXPORT_CRON_PATTERN,
+      function () {
+        console.log(
+          `Export triggered by cron job at ${new Date().toISOString()}`,
+        );
+        http
+          .request({
+            path: '/export-tasks',
+            method: 'POST',
+          })
+          .end();
+      },
+      null,
+      true,
+    );
+  })
+  .then(() => {
+    new CronJob(
+      env.RETRY_CRON_PATTERN,
+      async () => {
+        const retriableTasks = await getTasksThatCanBeRetried();
+        for (const task of retriableTasks) {
+          await task.retry();
+        }
+      },
+      null,
+      true,
+    );
+  });
 
 /**
  * Triggers an async export task for the mandatendatabank and writes the data
