@@ -16,7 +16,7 @@ services:
     image: lblod/mandaten-download-generator-service:1.0.0
     volumes:
       - ./data/files:/share
-      - ./config/type-exports.js:/config/type-exports.js
+      - ./config/type-export.js:/config/type-export.js
 ```
 
 Don't forget to update the dispatcher configuration to route requests to the
@@ -148,6 +148,7 @@ The following environment variables can be configured:
 * `EXPORT_CLASSIFICATION_URI`: the classification of the export, to ease
   filtering. Defaults to:
   `http://redpencil.data.gift/id/exports/concept/GenericExport`
+* `MU_SPARQL_ENDPOINT`: Sparql endpoint to query. Defaults to: `http://virtuoso:8890/sparql`  
 
 ## REST API
 
