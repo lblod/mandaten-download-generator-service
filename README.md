@@ -132,6 +132,8 @@ The following environment variables can be configured:
   `EXPORT_TTL_BATCH_SIZE * number_of_matching_triples` doesn't exceed the
   maximum number of triples return by the database (e.g. `ResultSetMaxRows` in
   Virtuoso).
+* `MAX_RETRIES_BATCH_EXPORT_STEP`: number of retries allowed for a query to `EXPORT_SPARQL_ENDPOINT`. By default no retries are allowed.  
+* `SLEEP_INTERVAL`: by default, the service wait 1000ms between every query to the `EXPORT_SPARQL_ENDPOINT`. Adjust this for a longer delay.
 * `RETRY_CRON_PATTERN`: cron pattern to configure the frequency of the function
   that retries failed tasks. The pattern follows the format as specified in
   [node-cron](https://www.npmjs.com/package/cron#available-cron-patterns).
@@ -148,7 +150,10 @@ The following environment variables can be configured:
 * `EXPORT_CLASSIFICATION_URI`: the classification of the export, to ease
   filtering. Defaults to:
   `http://redpencil.data.gift/id/exports/concept/GenericExport`
-* `MU_SPARQL_ENDPOINT`: Sparql endpoint to query. Defaults to: `http://virtuoso:8890/sparql`  
+* `MU_SPARQL_ENDPOINT`: Sparql endpoint to use for jobs and file metadata. Defaults to: `http://virtuoso:8890/sparql`  
+* `EXPORT_SPARQL_ENDPOINT`: Sparql endpoint to export data from. Defaults to: `MU_SPARQL_ENDPOINT`
+* `EXPORT_WITH_EXTRA_SUBQUERY`: default false, if set to true, the export query will use an extra subquery, which is sometimes needed to avoid virtuoso error `Sorted TOP clause specifies more than X rows to sort. 
+Only X are allowed.`
 
 ## REST API
 
