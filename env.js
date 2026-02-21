@@ -23,9 +23,20 @@ export const MU_SPARQL_ENDPOINT = envvar
   .default('http://virtuoso:8890/sparql')
   .asUrlString();
 
+  export const EXPORT_SPARQL_ENDPOINT = envvar
+  .get('EXPORT_SPARQL_ENDPOINT')
+  .example('http://virtuoso:8890/sparql')
+  .default(MU_SPARQL_ENDPOINT)
+  .asUrlString();  
+
 export const EXPORT_TTL_BATCH_SIZE = envvar
   .get('EXPORT_TTL_BATCH_SIZE')
   .default('1000')
+  .asIntPositive();
+
+export const MAX_RETRIES_BATCH_EXPORT_STEP = envvar
+  .get('MAX_RETRIES_BATCH_EXPORT_STEP')
+  .default('0')
   .asIntPositive();
 
 export const MAX_NUMBER_OF_RETRIES = envvar
@@ -93,6 +104,11 @@ export const SLEEP_INTERVAL = envvar
   .default('1000') // 1 second
   .asIntPositive();
 
+export const EXPORT_WITH_EXTRA_SUBQUERY = envvar
+  .get('EXPORT_WITH_EXTRA_SUBQUERY')
+  .default('false')
+  .asBool();
+
 // Constants
 
 export const STATUS_BUSY =
@@ -142,5 +158,10 @@ export const JOB_CREATOR_URI =
 
 export const sparqlConnectionOptions = {
   sparqlEndpoint: MU_SPARQL_ENDPOINT,
+  mayRetry: true,
+};
+
+export const exportSparqlConnectionOptions = {
+  sparqlEndpoint: EXPORT_SPARQL_ENDPOINT,
   mayRetry: true,
 };
